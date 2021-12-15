@@ -1,0 +1,10 @@
+{
+	"files.exclude": {
+		"F:/Projects/Building_Escape/.vscode": true,
+		"F:/Projects/Building_Escape/Content": true,
+		"F:/Projects/Building_Escape/Door": true,
+		"F:/Projects/Building_Escape/Intermediate": true,
+		"F:/Projects/Building_Escape/Saved": true
+	},
+	"C_Cpp.errorSquiggles": "Enabled"
+}
