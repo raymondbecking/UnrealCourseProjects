@@ -75,6 +75,7 @@ DerivedDataCache/*
 
 # General Assets for when using github with max LFS storage of 1gb
 *.uasset
+*.umap
 
 # Other UE files
 *.pdb
