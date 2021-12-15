@@ -1,0 +1,9 @@
+{
+	"files.exclude": {
+		"F:/UE Projects/ToonTanks/.vscode": true,
+		"F:/UE Projects/ToonTanks/Content": true,
+		"F:/UE Projects/ToonTanks/DerivedDataCache": true,
+		"F:/UE Projects/ToonTanks/Intermediate": true,
+		"F:/UE Projects/ToonTanks/Saved": true
+	}
+}
