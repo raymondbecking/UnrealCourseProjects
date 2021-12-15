@@ -1,0 +1,34 @@
+{
+	"folders": [
+		{
+			"name": "SimpleShooter",
+			"path": "."
+		},
+		{
+			"name": "UE4",
+			"path": "F:\\Unreal Engine\\UE_4.25"
+		}
+	],
+	"settings": {
+		"typescript.tsc.autoDetect": "off",
+		"files.associations": {
+			"**/*.html": "html",
+			"**/templates/*/*.html": "django-html",
+			"**/templates/*": "django-html",
+			"**/requirements{/**,*}.{txt,in}": "pip-requirements",
+			"deque": "cpp",
+			"hash_map": "cpp",
+			"hash_set": "cpp",
+			"list": "cpp",
+			"map": "cpp",
+			"set": "cpp",
+			"vector": "cpp"
+		}
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-vscode.cpptools",
+			"ms-dotnettools.csharp"
+		]
+	}
+}

@@ -1,0 +1,15 @@
+F:\UE Projects\SimpleShooter\Intermediate\Build\Win64\UE4Editor\Development\SimpleShooter\Definitions.SimpleShooter.h
+f:\ue projects\simpleshooter\source\simpleshooter\Gun.h
+F:\UE Projects\SimpleShooter\Intermediate\Build\Win64\UE4Editor\Inc\SimpleShooter\Gun.generated.h
+F:\Unreal Engine\UE_4.25\Engine\Source\Runtime\Engine\Classes\Kismet/GameplayStatics.h
+F:\Unreal Engine\UE_4.25\Engine\Source\Runtime\Engine\Classes\Kismet/KismetSystemLibrary.h
+F:\Unreal Engine\UE_4.25\Engine\Source\Runtime\CoreUObject\Public\UObject/PropertyAccessUtil.h
+F:\Unreal Engine\UE_4.25\Engine\Source\Runtime\Engine\Classes\Engine/CollisionProfile.h
+F:\Unreal Engine\UE_4.25\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\CollisionProfile.generated.h
+F:\Unreal Engine\UE_4.25\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\KismetSystemLibrary.generated.h
+F:\Unreal Engine\UE_4.25\Engine\Source\Runtime\Engine\Classes\Sound/DialogueTypes.h
+F:\Unreal Engine\UE_4.25\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\DialogueTypes.generated.h
+f:\unreal engine\ue_4.25\engine\source\runtime\engine\classes\kismet\GameplayStaticsTypes.h
+F:\Unreal Engine\UE_4.25\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameplayStaticsTypes.generated.h
+F:\Unreal Engine\UE_4.25\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\GameplayStatics.generated.h
+F:\Unreal Engine\UE_4.25\Engine\Source\Runtime\Engine\Public\DrawDebugHelpers.h
