@@ -78,4 +78,6 @@ DerivedDataCache/*
 
 # Other UE files
 *.pdb
+*.exp
+*.response
 
