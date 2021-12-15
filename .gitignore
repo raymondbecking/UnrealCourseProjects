@@ -72,3 +72,6 @@ Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+
+# General Assets for when using github with max LFS storage of 1gb
+*.uasset
