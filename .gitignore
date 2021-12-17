@@ -74,8 +74,14 @@ Plugins/*/Intermediate/*
 DerivedDataCache/*
 
 # General Assets for when using github with max LFS storage of 1gb
-*.uasset
-*.umap
+# uasset
+# umap
+
+# Big Asset packs
+BullCowGame-starter-kit/Content/Environment/*
+Building_Escape/Content/MedievalDungeon/*
+SimpleShooter/Content/StarterContent/*
+SimpleShooter/Content/AssetPacks/*
 
 # Other UE files
 *.pdb
