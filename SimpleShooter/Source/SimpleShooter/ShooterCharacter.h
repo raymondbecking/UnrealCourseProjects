@@ -28,6 +28,9 @@ public:
 	UFUNCTION(BlueprintPure)
 	float GetHealthPercent() const;
 
+	// UFUNCTION(BlueprintPure)
+	// bool IsFireDisabled() const;
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -44,9 +47,17 @@ private:
 	void LookUpRate(float AxisValue);
 	void LookRightRate(float AxisValue);
 
+	void SwitchGuns(float Slot);
+
+	// bool HasSwapped() const;
+
+	// bool CanFire = true;
 	
 	UPROPERTY(EditAnywhere)
 	float RotationRate = 50;
+
+	UPROPERTY(EditAnywhere)
+	float SwapDelay = 1;
 
 	UPROPERTY(EditDefaultsOnly)
 	float MaxHealth = 100;
@@ -55,10 +66,14 @@ private:
 	float Health;
 
 	UPROPERTY(EditDefaultsOnly)
-	TSubclassOf<AGun> GunClass;
+	int ActiveGunIndex = 0;
+
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<AGun> GunClass[3];
 
 	UPROPERTY()
-	AGun* Gun;
-
-
+	AGun* Gun[3];
+	
+	// FTimerHandle SwapTimer;
+	
 };
