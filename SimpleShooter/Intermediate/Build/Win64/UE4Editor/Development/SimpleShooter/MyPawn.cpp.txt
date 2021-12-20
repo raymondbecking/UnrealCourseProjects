@@ -1,3 +1,0 @@
-F:\UE Projects\SimpleShooter\Intermediate\Build\Win64\UE4Editor\Development\SimpleShooter\Definitions.SimpleShooter.h
-f:\ue projects\simpleshooter\source\simpleshooter\MyPawn.h
-F:\UE Projects\SimpleShooter\Intermediate\Build\Win64\UE4Editor\Inc\SimpleShooter\MyPawn.generated.h
