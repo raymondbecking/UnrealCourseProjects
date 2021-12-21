@@ -38,7 +38,7 @@ void AShooterCharacter::BeginPlay()
 			Gun[Index]->AttachToComponent(GetMesh(), FAttachmentTransformRules::KeepRelativeTransform, TEXT("WeaponSocket"));
 			Gun[Index]->SetOwner(this);
 
-			//Hide all weapons except the active weapon
+			//Don't hide the default active weapon
 			if(Index != ActiveGunIndex)
 			{				
 				Gun[Index]->SetActorHiddenInGame(true);
@@ -112,17 +112,19 @@ float AShooterCharacter::TakeDamage(float DamageAmount, struct FDamageEvent cons
 	return DamageToApply;
 }
 
+//Blueprint Callable
 bool AShooterCharacter::IsDead() const
 {
 	return Health <= 0;
 }
 
-// bool AShooterCharacter::IsFireDisabled() const
-// {
-// 	return CanFire;
-// }
+//Blueprint Callable
+bool AShooterCharacter::IsSwappingWeapons() const
+{
+	return IsSwapping;
+}
 
-
+//Blueprint Callable
 float AShooterCharacter::GetHealthPercent() const
 {
 	return Health / MaxHealth;
@@ -150,13 +152,16 @@ void AShooterCharacter::LookRightRate(float AxisValue)
 
 void AShooterCharacter::Shoot()
 {
-	Gun[ActiveGunIndex]->PullTrigger();
+	if(!IsSwapping)
+	{
+		Gun[ActiveGunIndex]->PullTrigger();
+	}
 }
 
-// bool AShooterCharacter::HasSwapped() const
-// {
-
-// }
+void AShooterCharacter::HasSwapped()
+{
+	IsSwapping = false;
+}
 
 void AShooterCharacter::SwitchGuns(float Slot)
 {	
@@ -166,15 +171,19 @@ void AShooterCharacter::SwitchGuns(float Slot)
 	//Adjust ActiveGun based on scrollwheel	
 	int32 SlotIndex = static_cast<int32>(Slot);
 	ActiveGunIndex -= SlotIndex;
+	//Swap to first weapon when holding the last weapon
 	if(ActiveGunIndex > 2) ActiveGunIndex = 0;
 	ActiveGunIndex = FMath::Clamp(ActiveGunIndex, 0, 2);
 
 	//Enable new Active Gun
 	Gun[ActiveGunIndex]->SetActorHiddenInGame(false);
 
-	//TODO : Add Weapon swap & cooldown
-	//Weapon cooldown between weapon swap
-	//CanFire = false;
-	//GetWorldTimerManager().SetTimer(SwapTimer, this, &AShooterCharacter::HasSwapped, SwapDelay);
-
+	//Start weapon cooldown when swapping guns
+	if(SlotIndex != 0)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Slot Index: %i"), SlotIndex);
+		IsSwapping = true;
+		//Weapon cooldown
+		GetWorldTimerManager().SetTimer(SwapTimer, this, &AShooterCharacter::HasSwapped, SwapDelay); 
+	}
 }

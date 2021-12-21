@@ -28,8 +28,8 @@ public:
 	UFUNCTION(BlueprintPure)
 	float GetHealthPercent() const;
 
-	// UFUNCTION(BlueprintPure)
-	// bool IsFireDisabled() const;
+	UFUNCTION(BlueprintPure)
+	bool IsSwappingWeapons() const;
 
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -49,9 +49,10 @@ private:
 
 	void SwitchGuns(float Slot);
 
-	// bool HasSwapped() const;
+	void HasSwapped();
 
-	// bool CanFire = true;
+	UPROPERTY(EditAnywhere)
+	bool IsSwapping = false;
 	
 	UPROPERTY(EditAnywhere)
 	float RotationRate = 50;
@@ -74,6 +75,6 @@ private:
 	UPROPERTY()
 	AGun* Gun[3];
 	
-	// FTimerHandle SwapTimer;
+	FTimerHandle SwapTimer;
 	
 };
