@@ -7,6 +7,8 @@
 #include "SimpleShooterGameModeBase.h"
 #include "Math/UnrealMathUtility.h"
 #include "TimerManager.h"
+#include "Containers/Array.h"
+
 
 // Sets default values
 AShooterCharacter::AShooterCharacter()
@@ -173,6 +175,7 @@ void AShooterCharacter::SwitchGuns(float Slot)
 	ActiveGunIndex -= SlotIndex;
 	//Swap to first weapon when holding the last weapon
 	if(ActiveGunIndex > 2) ActiveGunIndex = 0;
+	if(ActiveGunIndex < 0) ActiveGunIndex = 2;
 	ActiveGunIndex = FMath::Clamp(ActiveGunIndex, 0, 2);
 
 	//Enable new Active Gun

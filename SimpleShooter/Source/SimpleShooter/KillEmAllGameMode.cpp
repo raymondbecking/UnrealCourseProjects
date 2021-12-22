@@ -15,12 +15,6 @@ void AKillEmAllGameMode::PawnKilled(APawn* PawnKilled)
     {
         EndGame(false);
     }
-
-    //For loop over all shooterAI in the world
-        //Is not dead?
-            // return
-    
-    // EndGame
     
     for (AShooterAIController* AIController : TActorRange<AShooterAIController>(GetWorld()))
     {

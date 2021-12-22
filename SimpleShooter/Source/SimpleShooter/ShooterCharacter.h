@@ -58,7 +58,7 @@ private:
 	float RotationRate = 50;
 
 	UPROPERTY(EditAnywhere)
-	float SwapDelay = 1;
+	float SwapDelay = .3;
 
 	UPROPERTY(EditDefaultsOnly)
 	float MaxHealth = 100;
@@ -68,6 +68,11 @@ private:
 
 	UPROPERTY(EditDefaultsOnly)
 	int ActiveGunIndex = 0;
+
+	UPROPERTY(EditAnywhere)
+	int TotalGuns = 0;
+
+	const int Test = 5;
 
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<AGun> GunClass[3];
