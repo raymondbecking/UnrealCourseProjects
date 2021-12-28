@@ -18,30 +18,43 @@ AGun::AGun()
 
 	Mesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Mesh"));
 	Mesh->SetupAttachment(Root);
+
+	//Set up ammo
+	AmmoCount = MagazineSize;
 }
 
 void AGun::PullTrigger()
 {
-	UGameplayStatics::SpawnEmitterAttached(MuzzleFlash, Mesh, TEXT("MuzzleFlashSocket"));	
-	UGameplayStatics::SpawnSoundAttached(MuzzleSound, Mesh, TEXT("MuzzleFlashSocket"));
+	if(AmmoCount != 0)
+	{	
+		//Subtract Ammo when trigger is pulled
+		AmmoCount--;
 
-	FHitResult Hit;
-	FVector ShotDirection;
-	bool bSuccess = GunTrace(Hit, ShotDirection);
-	if(bSuccess)
-	{
-		//Spawn Emitter where something was hit by the line trace
-		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ImpactEffect, Hit.Location, ShotDirection.Rotation());
-		UGameplayStatics::SpawnSoundAtLocation(GetWorld(), ImpactSound, Hit.Location);
-		
-		
-		AActor* HitActor = Hit.GetActor();
-		if(HitActor != nullptr)
+		UGameplayStatics::SpawnEmitterAttached(MuzzleFlash, Mesh, TEXT("MuzzleFlashSocket"));	
+		UGameplayStatics::SpawnSoundAttached(MuzzleSound, Mesh, TEXT("MuzzleFlashSocket"));
+
+		FHitResult Hit;
+		FVector ShotDirection;
+		bool bSuccess = GunTrace(Hit, ShotDirection);
+		if(bSuccess)
 		{
-			FPointDamageEvent DamageEvent(Damage, Hit, ShotDirection, nullptr);
-			AController* OwnerController = GetOwnerController();
-			HitActor->TakeDamage(Damage, DamageEvent, GetOwnerController(), this);
+			//Spawn Emitter where something was hit by the line trace
+			UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ImpactEffect, Hit.Location, ShotDirection.Rotation());
+			UGameplayStatics::SpawnSoundAtLocation(GetWorld(), ImpactSound, Hit.Location);
+			
+			
+			AActor* HitActor = Hit.GetActor();
+			if(HitActor != nullptr)
+			{
+				FPointDamageEvent DamageEvent(Damage, Hit, ShotDirection, nullptr);
+				AController* OwnerController = GetOwnerController();
+				HitActor->TakeDamage(Damage, DamageEvent, GetOwnerController(), this);
+			}
 		}
+	}
+	else
+	{		
+		UGameplayStatics::SpawnSoundAttached(EmptyMagSound, Mesh, TEXT("MuzzleFlashSocket"));
 	}
 }
 
@@ -57,6 +70,8 @@ void AGun::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 }
+
+
 
 bool AGun::GunTrace(FHitResult& Hit, FVector& ShotDirection)
 {	

@@ -38,7 +38,6 @@ private:
 	UPROPERTY(EditAnywhere)
 	USoundBase* MuzzleSound;
 
-
 	UPROPERTY(EditAnywhere)
 	UParticleSystem* ImpactEffect;
 
@@ -50,6 +49,18 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	float Damage = 10.f;
+
+	UPROPERTY(EditAnywhere)
+	USoundBase* EmptyMagSound;
+
+	UPROPERTY(EditAnywhere)
+	int MagazineSize = 30.f;
+
+	UPROPERTY(VisibleAnywhere)
+	int AmmoCount;
+
+	UPROPERTY(VisibleAnywhere)
+	int AmmoReserves;
 
 	bool GunTrace(FHitResult& Hit, FVector& ShotDirection);
 
