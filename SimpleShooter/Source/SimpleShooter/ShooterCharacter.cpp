@@ -123,7 +123,7 @@ bool AShooterCharacter::IsDead() const
 //Blueprint Callable
 bool AShooterCharacter::IsSwappingWeapons() const
 {
-	return IsSwapping;
+	return GetWorldTimerManager().IsTimerActive(SwapTimer);
 }
 
 //Blueprint Callable
@@ -154,7 +154,7 @@ void AShooterCharacter::LookRightRate(float AxisValue)
 
 void AShooterCharacter::Shoot()
 {
-	if(!IsSwapping)
+	if(!IsSwappingWeapons())
 	{
 		Gun[ActiveGunIndex]->PullTrigger();
 	}
@@ -162,15 +162,10 @@ void AShooterCharacter::Shoot()
 
 void AShooterCharacter::Reload()
 {
-	if(!IsSwapping)
+	if(!IsSwappingWeapons())
 	{
 		Gun[ActiveGunIndex]->RefillMagazine();
 	}
-}
-
-void AShooterCharacter::HasSwapped()
-{
-	IsSwapping = false;
 }
 
 void AShooterCharacter::SwitchGuns(float Slot)
@@ -178,7 +173,7 @@ void AShooterCharacter::SwitchGuns(float Slot)
 	//Disable gun that got switched away
 	Gun[ActiveGunIndex]->SetActorHiddenInGame(true);	
 
-	//Adjust ActiveGun based on scrollwheel	
+	//Adjust ActiveGun based on scroll direction
 	int32 SlotIndex = static_cast<int32>(Slot);
 	ActiveGunIndex -= SlotIndex;
 	//Swap to first weapon when holding the last weapon
@@ -192,9 +187,7 @@ void AShooterCharacter::SwitchGuns(float Slot)
 	//Start weapon cooldown when swapping guns
 	if(SlotIndex != 0)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Slot Index: %i"), SlotIndex);
-		IsSwapping = true;
 		//Weapon cooldown
-		GetWorldTimerManager().SetTimer(SwapTimer, this, &AShooterCharacter::HasSwapped, SwapDelay); 
+		GetWorldTimerManager().SetTimer(SwapTimer, SwapDelay, false);
 	}
 }

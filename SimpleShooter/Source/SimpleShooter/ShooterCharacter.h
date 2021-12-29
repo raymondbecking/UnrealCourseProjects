@@ -49,17 +49,14 @@ private:
 	void LookRightRate(float AxisValue);
 
 	void SwitchGuns(float Slot);
-
-	void HasSwapped();
-
-	UPROPERTY(EditAnywhere)
-	bool IsSwapping = false;
 	
 	UPROPERTY(EditAnywhere)
 	float RotationRate = 50;
 
 	UPROPERTY(EditAnywhere)
 	float SwapDelay = .3;
+	
+	FTimerHandle SwapTimer;
 
 	UPROPERTY(EditDefaultsOnly)
 	float MaxHealth = 100;
@@ -80,7 +77,5 @@ private:
 
 	UPROPERTY()
 	AGun* Gun[3];
-	
-	FTimerHandle SwapTimer;
 	
 };
