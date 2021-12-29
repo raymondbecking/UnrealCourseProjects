@@ -58,6 +58,24 @@ void AGun::PullTrigger()
 	}
 }
 
+void AGun::RefillMagazine()
+{
+	if(AmmoReserves > 0)
+	{
+		if(AmmoReserves < (MagazineSize - AmmoCount))
+		{
+			AmmoCount += AmmoReserves;
+			AmmoReserves = 0;
+		}
+		else		
+		{
+			int AmmoMissing = (MagazineSize - AmmoCount);
+			AmmoCount += AmmoMissing;
+			AmmoReserves -= AmmoMissing;
+		}
+	}
+}
+
 // Called when the game starts or when spawned
 void AGun::BeginPlay()
 {

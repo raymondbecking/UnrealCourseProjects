@@ -86,8 +86,8 @@ void AShooterCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 	//Shoot action binding
 	PlayerInputComponent->BindAction(TEXT("Shoot"), EInputEvent::IE_Pressed, this, &AShooterCharacter::Shoot);
 
-
-
+	//Reload action binding
+	PlayerInputComponent->BindAction(TEXT("Reload"), EInputEvent::IE_Pressed, this, &AShooterCharacter::Reload);
 }
 
 float AShooterCharacter::TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser)
@@ -157,6 +157,14 @@ void AShooterCharacter::Shoot()
 	if(!IsSwapping)
 	{
 		Gun[ActiveGunIndex]->PullTrigger();
+	}
+}
+
+void AShooterCharacter::Reload()
+{
+	if(!IsSwapping)
+	{
+		Gun[ActiveGunIndex]->RefillMagazine();
 	}
 }
 

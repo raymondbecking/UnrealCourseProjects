@@ -39,6 +39,7 @@ public:
 
 	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
 	void Shoot();
+	void Reload();
 
 private:
 	void MoveForward(float AxisValue);

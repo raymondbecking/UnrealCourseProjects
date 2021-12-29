@@ -17,6 +17,8 @@ public:
 
 	void PullTrigger();
 
+	void RefillMagazine();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -54,13 +56,13 @@ private:
 	USoundBase* EmptyMagSound;
 
 	UPROPERTY(EditAnywhere)
-	int MagazineSize = 30.f;
+	int MagazineSize = 30;
 
 	UPROPERTY(VisibleAnywhere)
 	int AmmoCount;
 
-	UPROPERTY(VisibleAnywhere)
-	int AmmoReserves;
+	UPROPERTY(EditAnywhere)
+	int AmmoReserves = 60;
 
 	bool GunTrace(FHitResult& Hit, FVector& ShotDirection);
 
