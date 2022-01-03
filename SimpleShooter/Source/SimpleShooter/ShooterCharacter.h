@@ -31,6 +31,9 @@ public:
 	UFUNCTION(BlueprintPure)
 	bool IsSwappingWeapons() const;
 
+	UFUNCTION(BlueprintPure)
+	bool IsReloading() const;
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -49,28 +52,33 @@ private:
 	void LookRightRate(float AxisValue);
 
 	void SwitchGuns(float Slot);
+
+	void StartReload();
 	
 	UPROPERTY(EditAnywhere)
 	float RotationRate = 50;
 
 	UPROPERTY(EditAnywhere)
-	float SwapDelay = .3;
+	float SwapDelay = .5f;
 	
 	FTimerHandle SwapTimer;
 
+	UPROPERTY(EditAnywhere)
+	float ReloadDuration = 1.2f;
+
+	FTimerHandle ReloadTimer;
+
 	UPROPERTY(EditDefaultsOnly)
-	float MaxHealth = 100;
+	float MaxHealth = 150.f;
 
 	UPROPERTY(VisibleAnywhere)
-	float Health;
+	float Health = 100.f;
 
 	UPROPERTY(EditDefaultsOnly)
 	int ActiveGunIndex = 0;
 
 	UPROPERTY(EditAnywhere)
 	int TotalGuns = 0;
-
-	const int Test = 5;
 
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<AGun> GunClass[3];

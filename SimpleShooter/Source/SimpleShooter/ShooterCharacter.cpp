@@ -127,6 +127,12 @@ bool AShooterCharacter::IsSwappingWeapons() const
 }
 
 //Blueprint Callable
+bool AShooterCharacter::IsReloading() const
+{
+	return GetWorldTimerManager().IsTimerActive(ReloadTimer);
+}
+
+//Blueprint Callable
 float AShooterCharacter::GetHealthPercent() const
 {
 	return Health / MaxHealth;
@@ -154,7 +160,7 @@ void AShooterCharacter::LookRightRate(float AxisValue)
 
 void AShooterCharacter::Shoot()
 {
-	if(!IsSwappingWeapons())
+	if(!IsSwappingWeapons() && !IsReloading())
 	{
 		Gun[ActiveGunIndex]->PullTrigger();
 	}
@@ -163,9 +169,14 @@ void AShooterCharacter::Shoot()
 void AShooterCharacter::Reload()
 {
 	if(!IsSwappingWeapons())
-	{
-		Gun[ActiveGunIndex]->RefillMagazine();
+	{        
+		GetWorldTimerManager().SetTimer(ReloadTimer, this, &AShooterCharacter::StartReload, ReloadDuration); 		
 	}
+}
+
+void AShooterCharacter::StartReload()
+{
+	Gun[ActiveGunIndex]->RefillMagazine();
 }
 
 void AShooterCharacter::SwitchGuns(float Slot)
