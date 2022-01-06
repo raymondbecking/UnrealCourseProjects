@@ -56,8 +56,7 @@ void AShooterCharacter::BeginPlay()
 // Called every frame
 void AShooterCharacter::Tick(float DeltaTime)
 {
-	Super::Tick(DeltaTime);
-
+	Super::Tick(DeltaTime);	
 }
 
 // Called to bind functionality to input
@@ -168,7 +167,7 @@ void AShooterCharacter::Shoot()
 
 void AShooterCharacter::Reload()
 {
-	if(!IsSwappingWeapons())
+	if(!IsSwappingWeapons() && Gun[ActiveGunIndex]->GetAmmoCountPercent() != 100.f)
 	{        
 		GetWorldTimerManager().SetTimer(ReloadTimer, this, &AShooterCharacter::StartReload, ReloadDuration); 		
 	}

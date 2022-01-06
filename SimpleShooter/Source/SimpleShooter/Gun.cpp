@@ -76,6 +76,12 @@ void AGun::RefillMagazine()
 	}
 }
 
+
+float AGun::GetAmmoCountPercent()
+{
+	return AmmoCount / MagazineSize * 100;
+}
+
 // Called when the game starts or when spawned
 void AGun::BeginPlay()
 {
@@ -88,8 +94,6 @@ void AGun::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 }
-
-
 
 bool AGun::GunTrace(FHitResult& Hit, FVector& ShotDirection)
 {	

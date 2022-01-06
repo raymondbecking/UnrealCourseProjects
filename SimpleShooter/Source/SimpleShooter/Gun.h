@@ -19,6 +19,8 @@ public:
 
 	void RefillMagazine();
 
+	float GetAmmoCountPercent();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
