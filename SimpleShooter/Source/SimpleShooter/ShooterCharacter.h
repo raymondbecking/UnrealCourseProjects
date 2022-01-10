@@ -29,10 +29,19 @@ public:
 	float GetHealthPercent() const;
 
 	UFUNCTION(BlueprintPure)
+	float GetGunReloadSpeed() const;
+	
+	UFUNCTION(BlueprintPure)
 	bool IsSwappingWeapons() const;
 
 	UFUNCTION(BlueprintPure)
 	bool IsReloading() const;
+
+	UFUNCTION(BlueprintPure)
+	int GetActiveGunAmmo() const;
+
+	UFUNCTION(BlueprintPure)
+	int GetActiveGunReserves() const;
 
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -65,7 +74,7 @@ private:
 	FTimerHandle SwapTimer;
 
 	UPROPERTY(EditAnywhere)
-	float ReloadDuration = 1.2f;
+	float ReloadDuration = .85f;
 
 	FTimerHandle ReloadTimer;
 

@@ -14,12 +14,16 @@ class SIMPLESHOOTER_API AGun : public AActor
 public:	
 	// Sets default values for this actor's properties
 	AGun();
+	
+	float GetAmmoCountPercent() const;
+
+	int GetAmmoAmount() const;
+
+	int GetAmmoReserves() const;
 
 	void PullTrigger();
 
 	void RefillMagazine();
-
-	float GetAmmoCountPercent();
 
 protected:
 	// Called when the game starts or when spawned
@@ -58,7 +62,7 @@ private:
 	USoundBase* EmptyMagSound;
 
 	UPROPERTY(EditAnywhere)
-	int MagazineSize = 30;
+	int MagazineSize;
 
 	UPROPERTY(VisibleAnywhere)
 	int AmmoCount;
@@ -69,5 +73,6 @@ private:
 	bool GunTrace(FHitResult& Hit, FVector& ShotDirection);
 
 	AController* GetOwnerController() const;
+	
 
 };

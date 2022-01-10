@@ -137,6 +137,21 @@ float AShooterCharacter::GetHealthPercent() const
 	return Health / MaxHealth;
 }
 
+float AShooterCharacter::GetGunReloadSpeed() const
+{
+	return ReloadDuration;
+}
+
+int AShooterCharacter::GetActiveGunAmmo() const
+{
+	return Gun[ActiveGunIndex]->GetAmmoAmount();
+}
+
+int AShooterCharacter::GetActiveGunReserves() const
+{
+	return Gun[ActiveGunIndex]->GetAmmoReserves();
+}
+
 void AShooterCharacter::MoveForward(float AxisValue)
 {
 	AddMovementInput(GetActorForwardVector() * AxisValue);
@@ -167,7 +182,7 @@ void AShooterCharacter::Shoot()
 
 void AShooterCharacter::Reload()
 {
-	if(!IsSwappingWeapons() && Gun[ActiveGunIndex]->GetAmmoCountPercent() != 100.f)
+	if(!IsSwappingWeapons() && GetActiveGunReserves() != 0 && Gun[ActiveGunIndex]->GetAmmoCountPercent() != 100.f)
 	{        
 		GetWorldTimerManager().SetTimer(ReloadTimer, this, &AShooterCharacter::StartReload, ReloadDuration); 		
 	}

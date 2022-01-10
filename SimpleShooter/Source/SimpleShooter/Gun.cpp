@@ -18,9 +18,6 @@ AGun::AGun()
 
 	Mesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Mesh"));
 	Mesh->SetupAttachment(Root);
-
-	//Set up ammo
-	AmmoCount = MagazineSize;
 }
 
 void AGun::PullTrigger()
@@ -76,16 +73,30 @@ void AGun::RefillMagazine()
 	}
 }
 
-
-float AGun::GetAmmoCountPercent()
+float AGun::GetAmmoCountPercent() const
 {
 	return AmmoCount / MagazineSize * 100;
+}
+
+int AGun::GetAmmoAmount() const
+{
+	return AmmoCount;
+}
+
+int AGun::GetAmmoReserves() const
+{
+	return AmmoReserves;
 }
 
 // Called when the game starts or when spawned
 void AGun::BeginPlay()
 {
 	Super::BeginPlay();
+	
+	//Set up ammo
+	AmmoCount = MagazineSize;
+
+	UE_LOG(LogTemp, Warning, TEXT("Ammo: %i"), MagazineSize);
 }
 
 // Called every frame
