@@ -4,7 +4,7 @@
             "name": "UnrealEngine",
             "includePath": [
                 "F:\\Unreal Engine\\UE_4.25\\Engine\\Source",
-                "F:\\UE Projects\\SimpleShooter\\Source",
+                "F:\\UnrealCourseProjects\\SimpleShooter\\Source",
                 "F:\\Unreal Engine\\UE_4.25\\Engine\\Source\\Runtime",
                 "F:\\Unreal Engine\\UE_4.25\\Engine\\Source\\Runtime\\TraceLog\\Public",
                 "F:\\Unreal Engine\\UE_4.25\\Engine\\Source\\Runtime\\Core\\Public",

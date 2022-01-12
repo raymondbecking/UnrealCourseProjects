@@ -1,7 +1,7 @@
 {
 	"files.exclude": {
-		"F:/UE Projects/SimpleShooter/.vscode": true,
-		"F:/UE Projects/SimpleShooter/Content": true,
-		"F:/UE Projects/SimpleShooter/Intermediate": true
+		"F:/UnrealCourseProjects/SimpleShooter/.vscode": true,
+		"F:/UnrealCourseProjects/SimpleShooter/Content": true,
+		"F:/UnrealCourseProjects/SimpleShooter/Intermediate": true
 	}
 }

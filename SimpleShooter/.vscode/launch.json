@@ -5,7 +5,7 @@
 			"name": "SimpleShooter (Debug)",
 			"request": "launch",
 			"preLaunchTask": "SimpleShooter Win64 Debug Build",
-			"program": "F:\\UE Projects\\SimpleShooter\\Binaries\\Win64\\UE4-Win64-Debug.exe",
+			"program": "F:\\UnrealCourseProjects\\SimpleShooter\\Binaries\\Win64\\UE4-Win64-Debug.exe",
 			"args": [
 			],
 			"cwd": "F:\\Unreal Engine\\UE_4.25",
@@ -18,7 +18,7 @@
 			"name": "SimpleShooter (DebugGame)",
 			"request": "launch",
 			"preLaunchTask": "SimpleShooter Win64 DebugGame Build",
-			"program": "F:\\UE Projects\\SimpleShooter\\Binaries\\Win64\\UE4-Win64-DebugGame.exe",
+			"program": "F:\\UnrealCourseProjects\\SimpleShooter\\Binaries\\Win64\\UE4-Win64-DebugGame.exe",
 			"args": [
 			],
 			"cwd": "F:\\Unreal Engine\\UE_4.25",
@@ -31,7 +31,7 @@
 			"name": "SimpleShooter (Development)",
 			"request": "launch",
 			"preLaunchTask": "SimpleShooter Win64 Development Build",
-			"program": "F:\\UE Projects\\SimpleShooter\\Binaries\\Win64\\UE4.exe",
+			"program": "F:\\UnrealCourseProjects\\SimpleShooter\\Binaries\\Win64\\UE4.exe",
 			"args": [
 			],
 			"cwd": "F:\\Unreal Engine\\UE_4.25",
@@ -44,7 +44,7 @@
 			"name": "SimpleShooter (Shipping)",
 			"request": "launch",
 			"preLaunchTask": "SimpleShooter Win64 Shipping Build",
-			"program": "F:\\UE Projects\\SimpleShooter\\Binaries\\Win64\\UE4-Win64-Shipping.exe",
+			"program": "F:\\UnrealCourseProjects\\SimpleShooter\\Binaries\\Win64\\UE4-Win64-Shipping.exe",
 			"args": [
 			],
 			"cwd": "F:\\Unreal Engine\\UE_4.25",
@@ -57,7 +57,7 @@
 			"name": "SimpleShooter (Test)",
 			"request": "launch",
 			"preLaunchTask": "SimpleShooter Win64 Test Build",
-			"program": "F:\\UE Projects\\SimpleShooter\\Binaries\\Win64\\UE4-Win64-Test.exe",
+			"program": "F:\\UnrealCourseProjects\\SimpleShooter\\Binaries\\Win64\\UE4-Win64-Test.exe",
 			"args": [
 			],
 			"cwd": "F:\\Unreal Engine\\UE_4.25",
@@ -72,7 +72,7 @@
 			"preLaunchTask": "SimpleShooterEditor Win64 Debug Build",
 			"program": "F:\\Unreal Engine\\UE_4.25\\Engine\\Binaries\\Win64\\UE4Editor-Win64-Debug.exe",
 			"args": [
-				"F:\\UE Projects\\SimpleShooter\\SimpleShooter.uproject"
+				"F:\\UnrealCourseProjects\\SimpleShooter\\SimpleShooter.uproject"
 			],
 			"cwd": "F:\\Unreal Engine\\UE_4.25",
 			"stopAtEntry": false,
@@ -86,7 +86,7 @@
 			"preLaunchTask": "SimpleShooterEditor Win64 DebugGame Build",
 			"program": "F:\\Unreal Engine\\UE_4.25\\Engine\\Binaries\\Win64\\UE4Editor-Win64-DebugGame.exe",
 			"args": [
-				"F:\\UE Projects\\SimpleShooter\\SimpleShooter.uproject"
+				"F:\\UnrealCourseProjects\\SimpleShooter\\SimpleShooter.uproject"
 			],
 			"cwd": "F:\\Unreal Engine\\UE_4.25",
 			"stopAtEntry": false,
@@ -100,7 +100,7 @@
 			"preLaunchTask": "SimpleShooterEditor Win64 Development Build",
 			"program": "F:\\Unreal Engine\\UE_4.25\\Engine\\Binaries\\Win64\\UE4Editor.exe",
 			"args": [
-				"F:\\UE Projects\\SimpleShooter\\SimpleShooter.uproject"
+				"F:\\UnrealCourseProjects\\SimpleShooter\\SimpleShooter.uproject"
 			],
 			"cwd": "F:\\Unreal Engine\\UE_4.25",
 			"stopAtEntry": false,
@@ -117,7 +117,7 @@
 			"args": [
 				"-projectfiles",
 				"-vscode",
-				"-project=\"F:\\UE Projects\\SimpleShooter\\SimpleShooter.uproject\"",
+				"-project=\"F:\\UnrealCourseProjects\\SimpleShooter\\SimpleShooter.uproject\"",
 				"-game",
 				"-engine"
 			],

@@ -82,6 +82,7 @@ BullCowGame-starter-kit/Content/Environment/*
 Building_Escape/Content/MedievalDungeon/*
 SimpleShooter/Content/StarterContent/*
 SimpleShooter/Content/AssetPacks/*
+SimpleShooter/Content/MilitaryWeapSilver/*
 
 # Other UE files
 *.pdb
