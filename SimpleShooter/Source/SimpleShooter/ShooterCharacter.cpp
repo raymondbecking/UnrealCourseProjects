@@ -126,27 +126,18 @@ bool AShooterCharacter::IsSwappingWeapons() const
 }
 
 //Blueprint Callable
-bool AShooterCharacter::IsReloading() const
-{
-	return GetWorldTimerManager().IsTimerActive(ReloadTimer);
-}
-
-//Blueprint Callable
 float AShooterCharacter::GetHealthPercent() const
 {
 	return Health / MaxHealth;
 }
 
-float AShooterCharacter::GetGunReloadSpeed() const
-{
-	return ReloadDuration;
-}
-
+//Blueprint Callable
 int AShooterCharacter::GetActiveGunAmmo() const
 {
 	return Gun[ActiveGunIndex]->GetAmmoAmount();
 }
 
+//Blueprint Callable
 int AShooterCharacter::GetActiveGunReserves() const
 {
 	return Gun[ActiveGunIndex]->GetAmmoReserves();
@@ -174,7 +165,7 @@ void AShooterCharacter::LookRightRate(float AxisValue)
 
 void AShooterCharacter::Shoot()
 {
-	if(!IsSwappingWeapons() && !IsReloading())
+	if(!IsSwappingWeapons() && !IsReloading)
 	{
 		Gun[ActiveGunIndex]->PullTrigger();
 	}
@@ -183,14 +174,17 @@ void AShooterCharacter::Shoot()
 void AShooterCharacter::Reload()
 {
 	if(!IsSwappingWeapons() && GetActiveGunReserves() != 0 && Gun[ActiveGunIndex]->GetAmmoCountPercent() != 100.f)
-	{        
-		GetWorldTimerManager().SetTimer(ReloadTimer, this, &AShooterCharacter::StartReload, ReloadDuration); 		
+	{      
+		IsReloading = true; 
+		//Call Reload Event
+		OnReloadDelegate.Broadcast();
 	}
 }
 
-void AShooterCharacter::StartReload()
+void AShooterCharacter::RefillActiveGun()
 {
 	Gun[ActiveGunIndex]->RefillMagazine();
+	IsReloading = false;
 }
 
 void AShooterCharacter::SwitchGuns(float Slot)

@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "ShooterCharacter.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FShooterCharacterDelegate);
 class AGun;
 
 UCLASS()
@@ -26,16 +27,10 @@ public:
 	bool IsDead() const;
 
 	UFUNCTION(BlueprintPure)
-	float GetHealthPercent() const;
-
-	UFUNCTION(BlueprintPure)
-	float GetGunReloadSpeed() const;
+	float GetHealthPercent() const;  
 	
 	UFUNCTION(BlueprintPure)
 	bool IsSwappingWeapons() const;
-
-	UFUNCTION(BlueprintPure)
-	bool IsReloading() const;
 
 	UFUNCTION(BlueprintPure)
 	int GetActiveGunAmmo() const;
@@ -52,7 +47,12 @@ public:
 	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
 	void Shoot();
 	void Reload();
+	
+	UFUNCTION(BlueprintCallable)
+	void RefillActiveGun();
 
+	UPROPERTY(BlueprintAssignable, Category = "ShooterCharacter")
+	FShooterCharacterDelegate OnReloadDelegate;
 
 private:
 	void MoveForward(float AxisValue);
@@ -62,8 +62,6 @@ private:
 	void LookRightRate(float AxisValue);
 
 	void SwitchGuns(float Slot);
-
-	void StartReload();
 	
 	UPROPERTY(EditAnywhere)
 	float RotationRate = 50;
@@ -72,11 +70,6 @@ private:
 	float SwapDelay = .5f;
 	
 	FTimerHandle SwapTimer;
-
-	UPROPERTY(EditAnywhere)
-	float ReloadDuration = .85f;
-
-	FTimerHandle ReloadTimer;
 
 	UPROPERTY(EditDefaultsOnly)
 	float MaxHealth = 150.f;
@@ -95,5 +88,7 @@ private:
 
 	UPROPERTY()
 	AGun* Gun[3];
+
+	bool IsReloading = false;
 	
 };
