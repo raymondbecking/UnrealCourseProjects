@@ -131,13 +131,13 @@ float AShooterCharacter::GetHealthPercent() const
 	return Health / MaxHealth;
 }
 
-//Blueprint Callable
+//Blueprint Callable, used in UI Widget
 int AShooterCharacter::GetActiveGunAmmo() const
 {
 	return Gun[ActiveGunIndex]->GetAmmoAmount();
 }
 
-//Blueprint Callable
+//Blueprint Callable, used in UI Widget
 int AShooterCharacter::GetActiveGunReserves() const
 {
 	return Gun[ActiveGunIndex]->GetAmmoReserves();
@@ -165,7 +165,12 @@ void AShooterCharacter::LookRightRate(float AxisValue)
 
 void AShooterCharacter::Shoot()
 {
-	if(!IsSwappingWeapons() && !IsReloading)
+	//Trigger Reload on Shoot when the active mag is empty, but reserves are not
+	// if(GetActiveGunAmmo() == 0 && GetActiveGunReserves() != 0)
+	// {
+	// 	Reload();
+	// }
+	if(!IsSwappingWeapons() && !bIsReloading)
 	{
 		Gun[ActiveGunIndex]->PullTrigger();
 	}
@@ -175,7 +180,7 @@ void AShooterCharacter::Reload()
 {
 	if(!IsSwappingWeapons() && GetActiveGunReserves() != 0 && Gun[ActiveGunIndex]->GetAmmoCountPercent() != 100.f)
 	{      
-		IsReloading = true; 
+		bIsReloading = true; 
 		//Call Reload Event
 		OnReloadDelegate.Broadcast();
 	}
@@ -184,7 +189,7 @@ void AShooterCharacter::Reload()
 void AShooterCharacter::RefillActiveGun()
 {
 	Gun[ActiveGunIndex]->RefillMagazine();
-	IsReloading = false;
+	bIsReloading = false;
 }
 
 void AShooterCharacter::SwitchGuns(float Slot)

@@ -89,6 +89,6 @@ private:
 	UPROPERTY()
 	AGun* Gun[3];
 
-	bool IsReloading = false;
+	bool bIsReloading = false;
 	
 };
